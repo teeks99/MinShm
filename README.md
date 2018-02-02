@@ -123,20 +123,20 @@ of some build difference between visual studio versions.
 Dumpbin looking for the "test" string
 =====================================
 
-D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v100\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
-     496  HIGHLOW            00417138  _test_local
-
-D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v110\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
-     4B6  HIGHLOW            00418130  _test_local
-
-D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v120\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
-     4A6  HIGHLOW            00418130  _test_local
-
-D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v140\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
-     776  HIGHLOW            00418138  _test_local
-
-D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v141\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
-     7B6  HIGHLOW            00419138  _test_local
+    D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v100\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
+         496  HIGHLOW            00417138  _test_local
+    
+    D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v110\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
+         4B6  HIGHLOW            00418130  _test_local
+    
+    D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v120\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
+         4A6  HIGHLOW            00418130  _test_local
+    
+    D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v140\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
+         776  HIGHLOW            00418138  _test_local
+    
+    D:\tmp\TestGlobalMap\MinShm>"c:\Program Files (x86)\Microsoft Visual Studio 14.0\vc\bin\dumpbin.exe" /all Debug-v141\MinShm.exe | "C:\Program Files\Git\usr\bin\grep.exe" test
+         7B6  HIGHLOW            00419138  _test_local
      
 
 Hex of relocate_global.obj
@@ -145,14 +145,14 @@ Hex of relocate_global.obj
 Here's the hex dump of the end of relocate_global.obj, including the symbol 
 and its address 
      
-0270   00 00 00 00 00 00 00 00 00 00 2E 64 65 62 75 67  ...........debug
-0280   24 53 00 00 00 00 03 00 00 00 03 01 68 01 00 00  $S..........h...
-0290   00 00 00 00 00 00 00 00 00 00 00 00 00 00 2E 64  ...............d
-02A0   65 62 75 67 24 54 00 00 00 00 04 00 00 00 03 01  ebug$T..........
-02B0   04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-02C0   00 00 00 00 00 00 04 00 00 00 00 00 00 04 FF FF  ..............ÿÿ
-02D0   00 00 02 00 10 00 00 00 5F 74 65 73 74 5F 6F 74  ........_test_ot
-02E0   68 65 72 00                                      her.
+    0270   00 00 00 00 00 00 00 00 00 00 2E 64 65 62 75 67  ...........debug
+    0280   24 53 00 00 00 00 03 00 00 00 03 01 68 01 00 00  $S..........h...
+    0290   00 00 00 00 00 00 00 00 00 00 00 00 00 00 2E 64  ...............d
+    02A0   65 62 75 67 24 54 00 00 00 00 04 00 00 00 03 01  ebug$T..........
+    02B0   04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    02C0   00 00 00 00 00 00 04 00 00 00 00 00 00 04 FF FF  ..............ÿÿ
+    02D0   00 00 02 00 10 00 00 00 5F 74 65 73 74 5F 6F 74  ........_test_ot
+    02E0   68 65 72 00                                      her.
 
 This was confirmed by changeing the address in relocate_global.asm to:
 
@@ -162,9 +162,9 @@ This was confirmed by changeing the address in relocate_global.asm to:
       
 And viewing the resulting hex:
 
-02C0   00 00 00 00 00 00 04 00 00 00 56 34 12 04 FF FF  ..........V4..ÿÿ
-02D0   00 00 02 00 10 00 00 00 5F 74 65 73 74 5F 6F 74  ........_test_ot
-02E0   68 65 72 00                                      her.
+    02C0   00 00 00 00 00 00 04 00 00 00 56 34 12 04 FF FF  ..........V4..ÿÿ
+    02D0   00 00 02 00 10 00 00 00 5F 74 65 73 74 5F 6F 74  ........_test_ot
+    02E0   68 65 72 00                                      her.
 
 ![screenshot here](relocate_global.obj-move-location.png)
 
@@ -181,164 +181,170 @@ DBH Tool Output
 I was able to use the dbh tool to find the test_other symbol, looks the same 
 in VS2010 and VS2015, VS2017 seems to not be compatible with dbh.
 
-D:\tmp\TestGlobalMap\MinShm>dbh Debug-v100\MinShm.pdb name test_other
-
-   name : test_other
-   addr :  4000000
-   size : 0
-  flags : 0
-   type : 0
-modbase :  1000000
-  value :        0
-    reg : 0
-  scope : SymTagPublicSymbol (a)
-    tag : SymTagPublicSymbol (a)
-  index : 3
-
-
-D:\tmp\TestGlobalMap\MinShm>dbh Debug-v140\MinShm.pdb name test_other
-
-   name : test_other
-   addr :  4000000
-   size : 0
-  flags : 0
-   type : 0
-modbase :  1000000
-  value :        0
-    reg : 0
-  scope : SymTagPublicSymbol (a)
-    tag : SymTagPublicSymbol (a)
-  index : 
-
-D:\tmp\TestGlobalMap\MinShm>dbh Debug-v141\MinShm.pdb name test_other
-
-no symbol found
-
-D:\tmp\TestGlobalMap\MinShm>dbh Debug-v100\MinShm.pdb name test_local
-
-   name : test_local
-   addr :  1017138
-   size : c
-  flags : 0
-   type : 2
-modbase :  1000000
-  value :        0
-    reg : 0
-  scope : SymTagExe (1)
-    tag : SymTagData (7)
-  index : 1
-
-D:\tmp\TestGlobalMap\MinShm>dbh Debug-v140\MinShm.pdb name test_local
-
-   name : test_local
-   addr :  1018138
-   size : c
-  flags : 0
-   type : 2
-modbase :  1000000
-  value :        0
-    reg : 0
-  scope : SymTagExe (1)
-    tag : SymTagData (7)
-  index : 1
-
-D:\tmp\TestGlobalMap\MinShm>dbh Debug-v141\MinShm.pdb name test_local
-
-no symbol found
-
-
+    D:\tmp\TestGlobalMap\MinShm>dbh Debug-v100\MinShm.pdb name test_other
+    
+       name : test_other
+       addr :  4000000
+       size : 0
+      flags : 0
+       type : 0
+    modbase :  1000000
+      value :        0
+        reg : 0
+      scope : SymTagPublicSymbol (a)
+        tag : SymTagPublicSymbol (a)
+      index : 3
+    
+     
+    D:\tmp\TestGlobalMap\MinShm>dbh Debug-v140\MinShm.pdb name test_other
+    
+       name : test_other
+       addr :  4000000
+       size : 0
+      flags : 0
+       type : 0
+    modbase :  1000000
+      value :        0
+        reg : 0
+      scope : SymTagPublicSymbol (a)
+        tag : SymTagPublicSymbol (a)
+      index : 
+    
+    D:\tmp\TestGlobalMap\MinShm>dbh Debug-v141\MinShm.pdb name test_other
+    
+    no symbol found
+    
+    D:\tmp\TestGlobalMap\MinShm>dbh Debug-v100\MinShm.pdb name test_local
+    
+       name : test_local
+       addr :  1017138
+       size : c
+      flags : 0
+       type : 2
+    modbase :  1000000
+      value :        0
+        reg : 0
+      scope : SymTagExe (1)
+        tag : SymTagData (7)
+      index : 1
+    
+    D:\tmp\TestGlobalMap\MinShm>dbh Debug-v140\MinShm.pdb name test_local
+    
+       name : test_local
+       addr :  1018138
+       size : c
+      flags : 0
+       type : 2
+    modbase :  1000000
+      value :        0
+        reg : 0
+      scope : SymTagExe (1)
+        tag : SymTagData (7)
+      index : 1
+    
+    D:\tmp\TestGlobalMap\MinShm>dbh Debug-v141\MinShm.pdb name test_local
+    
+    no symbol found
+    
+    
 Looking in the Disassembly
 ==========================
 
 The disassembly shown while debugging is below, the key line is the same for 
 each VS version:
 
-   test_other.a = 30; 
-000717AA  mov         dword ptr ds:[4000000h],1Eh  
+       test_other.a = 30; 
+    000717AA  mov         dword ptr ds:[4000000h],1Eh  
 
 
------VS2010-----
-int main(int argc, char* argv[])
-{
-   AttachShm();
-00DE147E  call        AttachShm (0DE10AFh)  
+VS2010
+------
 
-   // Local variable always viewable in debugger
-   int test_stack = 10;
-00DE1483  mov         dword ptr [test_stack],0Ah  
+    int main(int argc, char* argv[])
+    {
+       AttachShm();
+    00DE147E  call        AttachShm (0DE10AFh)  
+    
+       // Local variable always viewable in debugger
+       int test_stack = 10;
+    00DE1483  mov         dword ptr [test_stack],0Ah  
+    
+       // This works (viewable from other program in shm block) 
+       // but can't be viewed in the debugger for >VS2010
+       test_other.a = 30; 
+    00DE148A  mov         dword ptr ds:[4000000h],1Eh  
+       
+       // Global extern "C" struct, always viewable in debugger
+       test_local.one = 40;
+    00DE1494  mov         dword ptr [_test_local (0DE7138h)],28h  
+    
+       test_other_struct* test_other_ptr = reinterpret_cast<test_other_struct*>(SHM_ADDRESS);
+    00DE149E  mov         dword ptr [test_other_ptr],4000000h  
+       // This works and can be viewed in all VS versions
+       test_other_ptr->b = 31; 
+    00DE14A5  mov         eax,dword ptr [test_other_ptr]  
+    00DE14A8  mov         dword ptr [eax+4],1Fh  
+    
+       // Put a breakpoint on the next line, view test_other.a in watch window
+       return 0;
+    }
 
-   // This works (viewable from other program in shm block) 
-   // but can't be viewed in the debugger for >VS2010
-   test_other.a = 30; 
-00DE148A  mov         dword ptr ds:[4000000h],1Eh  
+VS2015
+------
+
+       AttachShm();
+    0036175E  call        AttachShm (036119Fh)  
+    
+       // Local variable always viewable in debugger
+       int test_stack = 10;
+    00361763  mov         dword ptr [test_stack],0Ah  
+    
+       // This works (viewable from other program in shm block) 
+       // but can't be viewed in the debugger for >VS2010
+       test_other.a = 30; 
+    0036176A  mov         dword ptr ds:[4000000h],1Eh  
+       
+       // Global extern "C" struct, always viewable in debugger
+       test_local.one = 40;
+    00361774  mov         dword ptr [test_local (0368138h)],28h  
+    
+       test_other_struct* test_other_ptr = reinterpret_cast<test_other_struct*>(SHM_ADDRESS);
+    0036177E  mov         dword ptr [test_other_ptr],4000000h  
+       // This works and can be viewed in all VS versions
+       test_other_ptr->b = 31; 
+    00361785  mov         eax,dword ptr [test_other_ptr]  
+    00361788  mov         dword ptr [eax+4],1Fh  
+    
+       // Put a breakpoint on the next line, view test_other.a in watch window
+       return 0;
    
-   // Global extern "C" struct, always viewable in debugger
-   test_local.one = 40;
-00DE1494  mov         dword ptr [_test_local (0DE7138h)],28h  
-
-   test_other_struct* test_other_ptr = reinterpret_cast<test_other_struct*>(SHM_ADDRESS);
-00DE149E  mov         dword ptr [test_other_ptr],4000000h  
-   // This works and can be viewed in all VS versions
-   test_other_ptr->b = 31; 
-00DE14A5  mov         eax,dword ptr [test_other_ptr]  
-00DE14A8  mov         dword ptr [eax+4],1Fh  
-
-   // Put a breakpoint on the next line, view test_other.a in watch window
-   return 0;
-}
-
------VS2015-----
-   AttachShm();
-0036175E  call        AttachShm (036119Fh)  
-
-   // Local variable always viewable in debugger
-   int test_stack = 10;
-00361763  mov         dword ptr [test_stack],0Ah  
-
-   // This works (viewable from other program in shm block) 
-   // but can't be viewed in the debugger for >VS2010
-   test_other.a = 30; 
-0036176A  mov         dword ptr ds:[4000000h],1Eh  
    
-   // Global extern "C" struct, always viewable in debugger
-   test_local.one = 40;
-00361774  mov         dword ptr [test_local (0368138h)],28h  
+VS2017
+------
 
-   test_other_struct* test_other_ptr = reinterpret_cast<test_other_struct*>(SHM_ADDRESS);
-0036177E  mov         dword ptr [test_other_ptr],4000000h  
-   // This works and can be viewed in all VS versions
-   test_other_ptr->b = 31; 
-00361785  mov         eax,dword ptr [test_other_ptr]  
-00361788  mov         dword ptr [eax+4],1Fh  
-
-   // Put a breakpoint on the next line, view test_other.a in watch window
-   return 0;
-   
-   
------VS2017-----
-   AttachShm();
-0007179E  call        AttachShm (0711B3h)  
-
-   // Local variable always viewable in debugger
-   int test_stack = 10;
-000717A3  mov         dword ptr [test_stack],0Ah  
-
-   // This works (viewable from other program in shm block) 
-   // but can't be viewed in the debugger for >VS2010
-   test_other.a = 30; 
-000717AA  mov         dword ptr ds:[4000000h],1Eh  
-   
-   // Global extern "C" struct, always viewable in debugger
-   test_local.one = 40;
-000717B4  mov         dword ptr [test_local (079138h)],28h  
-
-   test_other_struct* test_other_ptr = reinterpret_cast<test_other_struct*>(SHM_ADDRESS);
-000717BE  mov         dword ptr [test_other_ptr],4000000h  
-   // This works and can be viewed in all VS versions
-   test_other_ptr->b = 31; 
-000717C5  mov         eax,dword ptr [test_other_ptr]  
-000717C8  mov         dword ptr [eax+4],1Fh  
-
-   // Put a breakpoint on the next line, view test_other.a in watch window
-   return 0;   
+       AttachShm();
+    0007179E  call        AttachShm (0711B3h)  
+    
+       // Local variable always viewable in debugger
+       int test_stack = 10;
+    000717A3  mov         dword ptr [test_stack],0Ah  
+    
+       // This works (viewable from other program in shm block) 
+       // but can't be viewed in the debugger for >VS2010
+       test_other.a = 30; 
+    000717AA  mov         dword ptr ds:[4000000h],1Eh  
+       
+       // Global extern "C" struct, always viewable in debugger
+       test_local.one = 40;
+    000717B4  mov         dword ptr [test_local (079138h)],28h  
+    
+       test_other_struct* test_other_ptr = reinterpret_cast<test_other_struct*>(SHM_ADDRESS);
+    000717BE  mov         dword ptr [test_other_ptr],4000000h  
+       // This works and can be viewed in all VS versions
+       test_other_ptr->b = 31; 
+    000717C5  mov         eax,dword ptr [test_other_ptr]  
+    000717C8  mov         dword ptr [eax+4],1Fh  
+    
+       // Put a breakpoint on the next line, view test_other.a in watch window
+       return 0;   
    
