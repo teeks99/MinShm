@@ -81,13 +81,13 @@ issue is when we put a break point at the `return 0;` line, then put a watch
 on the four items (`test_stack`, `test_other`, `test_local`, and 
 `test_other_ptr`). 
 
-For Visual Studio 2010, the ![watch window shows the correct values](VS2010-watch.png) 
+For Visual Studio 2010, the watch window shows the correct values![watch window](VS2010-watch.png) 
 for all four items, and the structs (and pointer) can be expanded to view the 
 internal values.
 
 For Visual Studio 2012, 2013, 2015, and 2017, the watch windows shows the 
 correct value for all the items except the `test_other` from the shared memory 
-block. ![They show this as `identifier "test_other" is undefined`](VS2017-watch.png).
+block. They show this as `identifier "test_other" is undefined`![watch window](VS2017-watch.png).
 
 **I believe this is a bug in the debugger that has shipped with versions of 
 visual studio >VS2010.**
@@ -113,8 +113,8 @@ that this is actually using the VS2010 debugger under the hood, and lacks the
 other improvements that have been made to the debugger, so is not a long-term
 solution.
 
-I also tried to open the VS2010 binary in WinDbg, but ![it wasn't able to
-identify the shared memory symbol either](WinDbg-VS2010Bin-watch.png).
+I also tried to open the VS2010 binary in WinDbg, but it wasn't able to
+identify the shared memory symbol either![windbg](WinDbg-VS2010Bin-watch.png).
 
 These steps really point towards this being an issue with the debugger, instead
 of some build difference between visual studio versions.
